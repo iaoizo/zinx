@@ -10,12 +10,10 @@ import (
 	"fmt"
 	"os"
 	"reflect"
-	"testing"
 	"time"
 
 	"github.com/iaoizo/zinx/zlog"
 	"github.com/iaoizo/zinx/zutils/commandline/args"
-	"github.com/iaoizo/zinx/zutils/commandline/uflag"
 )
 
 const (
@@ -181,23 +179,23 @@ func (g *Config) InitLogConfig() {
 init, set default value
 */
 func init() {
-	pwd, err := os.Getwd()
-	if err != nil {
-		pwd = "."
-	}
-
-	args.InitConfigFlag(
-		pwd+"/conf/zinx.json",
-		"The configuration file defaults to <exeDir>/conf/zinx.json if it is not set.",
-	)
-
-	// Note: Prevent errors like "flag provided but not defined: -test.paniconexit0" from occurring in go test.
-	// (防止 go test 出现"flag provided but not defined: -test.paniconexit0"等错误)
-	testing.Init()
-	uflag.Parse()
-
-	// after parsing
-	args.FlagHandle()
+	//pwd, err := os.Getwd()
+	//if err != nil {
+	//	pwd = "."
+	//}
+	//
+	//args.InitConfigFlag(
+	//	pwd+"/conf/zinx.json",
+	//	"The configuration file defaults to <exeDir>/conf/zinx.json if it is not set.",
+	//)
+	//
+	//// Note: Prevent errors like "flag provided but not defined: -test.paniconexit0" from occurring in go test.
+	//// (防止 go test 出现"flag provided but not defined: -test.paniconexit0"等错误)
+	//testing.Init()
+	//uflag.Parse()
+	//
+	//// after parsing
+	//args.FlagHandle()
 
 	// Initialize the GlobalObject variable and set some default values.
 	// (初始化GlobalObject变量，设置一些默认值)
@@ -213,7 +211,7 @@ func init() {
 		MaxWorkerTaskLen:  1024,
 		WorkerMode:        "",
 		MaxMsgChanLen:     1024,
-		LogDir:            pwd + "/log",
+		LogDir:            "/tmp",
 		LogFile:           "", // if set "", print to Stderr(默认日志文件为空，打印到stderr)
 		LogIsolationLevel: 0,
 		HeartbeatMax:      10, // The default maximum interval for heartbeat detection is 10 seconds. (默认心跳检测最长间隔为10秒)
