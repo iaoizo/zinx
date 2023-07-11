@@ -4,7 +4,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/aceld/zinx/zutils/commandline/uflag"
+	"github.com/iaoizo/zinx/zutils/commandline/uflag"
 )
 
 type args struct {

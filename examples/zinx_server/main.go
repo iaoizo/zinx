@@ -7,10 +7,10 @@
 package main
 
 import (
-	"github.com/aceld/zinx/examples/zinx_server/s_router"
-	"github.com/aceld/zinx/ziface"
-	"github.com/aceld/zinx/zlog"
-	"github.com/aceld/zinx/znet"
+	"github.com/iaoizo/zinx/examples/zinx_server/s_router"
+	"github.com/iaoizo/zinx/ziface"
+	"github.com/iaoizo/zinx/zlog"
+	"github.com/iaoizo/zinx/znet"
 )
 
 // DoConnectionBegin Executed when creating a connection.

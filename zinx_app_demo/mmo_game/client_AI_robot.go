@@ -14,8 +14,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/aceld/zinx/zinx_app_demo/mmo_game/pb"
 	"github.com/golang/protobuf/proto"
+	"github.com/iaoizo/zinx/zinx_app_demo/mmo_game/pb"
 )
 
 type Message struct {

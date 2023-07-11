@@ -3,8 +3,8 @@ package znet
 import (
 	"sync"
 
-	"github.com/aceld/zinx/zconf"
-	"github.com/aceld/zinx/ziface"
+	"github.com/iaoizo/zinx/zconf"
+	"github.com/iaoizo/zinx/ziface"
 )
 
 const (

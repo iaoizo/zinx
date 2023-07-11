@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/aceld/zinx/examples/zinx_client/c_router"
-	"github.com/aceld/zinx/ziface"
-	"github.com/aceld/zinx/zlog"
-	"github.com/aceld/zinx/znet"
+	"github.com/iaoizo/zinx/examples/zinx_client/c_router"
+	"github.com/iaoizo/zinx/ziface"
+	"github.com/iaoizo/zinx/zlog"
+	"github.com/iaoizo/zinx/znet"
 	"os"
 	"os/signal"
 	"time"

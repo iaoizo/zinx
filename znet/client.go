@@ -6,12 +6,12 @@ import (
 	"net"
 	"time"
 
-	"github.com/aceld/zinx/zconf"
-	"github.com/aceld/zinx/zdecoder"
-	"github.com/aceld/zinx/ziface"
-	"github.com/aceld/zinx/zlog"
-	"github.com/aceld/zinx/zpack"
 	"github.com/gorilla/websocket"
+	"github.com/iaoizo/zinx/zconf"
+	"github.com/iaoizo/zinx/zdecoder"
+	"github.com/iaoizo/zinx/ziface"
+	"github.com/iaoizo/zinx/zlog"
+	"github.com/iaoizo/zinx/zpack"
 )
 
 type Client struct {

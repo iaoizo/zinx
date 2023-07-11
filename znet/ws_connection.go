@@ -8,12 +8,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/aceld/zinx/zconf"
-	"github.com/aceld/zinx/ziface"
-	"github.com/aceld/zinx/zinterceptor"
-	"github.com/aceld/zinx/zlog"
-	"github.com/aceld/zinx/zpack"
 	"github.com/gorilla/websocket"
+	"github.com/iaoizo/zinx/zconf"
+	"github.com/iaoizo/zinx/ziface"
+	"github.com/iaoizo/zinx/zinterceptor"
+	"github.com/iaoizo/zinx/zlog"
+	"github.com/iaoizo/zinx/zpack"
 )
 
 // WsConnection is a module for handling the read and write operations of a WebSocket connection.

@@ -8,13 +8,13 @@ import (
 	"sync"
 	"time"
 
-	"github.com/aceld/zinx/zconf"
-	"github.com/aceld/zinx/zinterceptor"
-	"github.com/aceld/zinx/zlog"
-	"github.com/aceld/zinx/zpack"
 	"github.com/gorilla/websocket"
+	"github.com/iaoizo/zinx/zconf"
+	"github.com/iaoizo/zinx/zinterceptor"
+	"github.com/iaoizo/zinx/zlog"
+	"github.com/iaoizo/zinx/zpack"
 
-	"github.com/aceld/zinx/ziface"
+	"github.com/iaoizo/zinx/ziface"
 )
 
 // Connection TCP connection module

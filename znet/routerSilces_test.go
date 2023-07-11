@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/aceld/zinx/ziface"
+	"github.com/iaoizo/zinx/ziface"
 )
 
 func A1(request ziface.IRequest) {

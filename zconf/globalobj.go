@@ -13,9 +13,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/aceld/zinx/zlog"
-	"github.com/aceld/zinx/zutils/commandline/args"
-	"github.com/aceld/zinx/zutils/commandline/uflag"
+	"github.com/iaoizo/zinx/zlog"
+	"github.com/iaoizo/zinx/zutils/commandline/args"
+	"github.com/iaoizo/zinx/zutils/commandline/uflag"
 )
 
 const (

@@ -3,12 +3,12 @@ package main
 import (
 	"fmt"
 
-	"github.com/aceld/zinx/zdecoder"
-	"github.com/aceld/zinx/ziface"
-	"github.com/aceld/zinx/zinx_app_demo/mmo_game/api"
-	"github.com/aceld/zinx/zinx_app_demo/mmo_game/core"
-	"github.com/aceld/zinx/znet"
-	"github.com/aceld/zinx/zpack"
+	"github.com/iaoizo/zinx/zdecoder"
+	"github.com/iaoizo/zinx/ziface"
+	"github.com/iaoizo/zinx/zinx_app_demo/mmo_game/api"
+	"github.com/iaoizo/zinx/zinx_app_demo/mmo_game/core"
+	"github.com/iaoizo/zinx/znet"
+	"github.com/iaoizo/zinx/zpack"
 )
 
 // OnConnectionAdd 当客户端建立连接的时候的hook函数

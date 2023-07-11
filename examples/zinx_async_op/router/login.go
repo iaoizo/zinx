@@ -4,12 +4,12 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/aceld/zinx/examples/zinx_async_op/async_op_apis"
-	"github.com/aceld/zinx/examples/zinx_async_op/db_model"
-	"github.com/aceld/zinx/examples/zinx_async_op/msg_struct"
-	"github.com/aceld/zinx/ziface"
-	"github.com/aceld/zinx/zlog"
-	"github.com/aceld/zinx/znet"
+	"github.com/iaoizo/zinx/examples/zinx_async_op/async_op_apis"
+	"github.com/iaoizo/zinx/examples/zinx_async_op/db_model"
+	"github.com/iaoizo/zinx/examples/zinx_async_op/msg_struct"
+	"github.com/iaoizo/zinx/ziface"
+	"github.com/iaoizo/zinx/zlog"
+	"github.com/iaoizo/zinx/znet"
 )
 
 type LoginRouter struct {
