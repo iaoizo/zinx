@@ -199,6 +199,7 @@ func init() {
 
 	// Initialize the GlobalObject variable and set some default values.
 	// (初始化GlobalObject变量，设置一些默认值)
+
 	GlobalObject = &Config{
 		Name:              "ZinxServerApp",
 		Version:           "V1.0",
