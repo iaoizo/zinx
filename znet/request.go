@@ -1,10 +1,9 @@
 package znet
 
 import (
-	"sync"
-
 	"github.com/iaoizo/zinx/zconf"
 	"github.com/iaoizo/zinx/ziface"
+	"sync"
 )
 
 const (

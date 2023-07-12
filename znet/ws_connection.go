@@ -30,10 +30,6 @@ type WsConnection struct {
 	//  这个是理论支持的进程connID的最大数量)
 	connID uint64
 
-	// The workerid responsible for handling the link
-	// 负责处理该链接的workerid
-	workerID uint32
-
 	// msgHandler is the message management module for MsgID and the corresponding message handling method.
 	// (消息管理MsgID和对应处理方法的消息管理模块)
 	msgHandler ziface.IMsgHandle
@@ -215,6 +211,7 @@ func (c *WsConnection) StartReader() {
 			n := len(buffer)
 			if err != nil {
 				zlog.Ins().ErrorF("read msg head [read datalen=%d], error = %s", n, err.Error())
+
 				return
 			}
 			zlog.Ins().DebugF("read buffer %s \n", hex.EncodeToString(buffer[0:n]))
@@ -268,9 +265,6 @@ func (c *WsConnection) Start() {
 		c.updateActivity()
 	}
 
-	// 占用workerid
-	c.workerID = useWorker(c)
-
 	// Start the Goroutine for users to read data from the client.
 	// (开启用户从客户端读取数据流程的Goroutine)
 	go c.StartReader()
@@ -278,9 +272,6 @@ func (c *WsConnection) Start() {
 	select {
 	case <-c.ctx.Done():
 		c.finalizer()
-
-		// 归还workerid
-		freeWorker(c)
 		return
 	}
 }
@@ -306,10 +297,6 @@ func (c *WsConnection) GetTCPConnection() net.Conn {
 
 func (c *WsConnection) GetConnID() uint64 {
 	return c.connID
-}
-
-func (c *WsConnection) GetWorkerID() uint32 {
-	return c.workerID
 }
 
 func (c *WsConnection) RemoteAddr() net.Addr {
@@ -358,7 +345,7 @@ func (c *WsConnection) SendToQueue(data []byte) error {
 
 	if data == nil {
 		zlog.Ins().ErrorF("Pack data is nil")
-		return errors.New("Pack data is nil ")
+		return errors.New("Pack data is nil")
 	}
 
 	select {

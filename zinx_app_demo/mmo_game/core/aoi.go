@@ -12,7 +12,7 @@ const (
 )
 
 /*
-AOIManager AOI管理模块
+AOI管理模块
 */
 type AOIManager struct {
 	MinX  int           //区域左边界坐标

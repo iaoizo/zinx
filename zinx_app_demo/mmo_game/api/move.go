@@ -10,7 +10,7 @@ import (
 	"github.com/iaoizo/zinx/znet"
 )
 
-// MoveApi 玩家移动
+// 玩家移动
 type MoveApi struct {
 	znet.BaseRouter
 }

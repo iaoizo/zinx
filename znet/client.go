@@ -130,7 +130,7 @@ func (c *Client) Restart() {
 			// Create a raw socket and get net.Conn (创建原始Socket，得到net.Conn)
 			wsConn, _, err := c.dialer.Dial(wsAddr, nil)
 			if err != nil {
-				// connection failed
+				// Conection failed
 				zlog.Ins().ErrorF("WsClient connect to server failed, err:%v", err)
 				c.ErrChan <- err
 				return
@@ -158,7 +158,7 @@ func (c *Client) Restart() {
 			} else {
 				conn, err = net.DialTCP("tcp", nil, addr)
 				if err != nil {
-					// connection failed
+					// Conection failed
 					zlog.Ins().ErrorF("client connect to server failed, err:%v", err)
 					c.ErrChan <- err
 					return

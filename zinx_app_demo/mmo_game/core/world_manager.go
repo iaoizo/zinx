@@ -5,7 +5,7 @@ import (
 )
 
 /*
-WorldManager 当前游戏世界的总管理模块
+当前游戏世界的总管理模块
 */
 type WorldManager struct {
 	AoiMgr  *AOIManager       //当前世界地图的AOI规划管理器

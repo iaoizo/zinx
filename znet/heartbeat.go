@@ -2,10 +2,9 @@ package znet
 
 import (
 	"fmt"
-	"time"
-
 	"github.com/iaoizo/zinx/ziface"
 	"github.com/iaoizo/zinx/zlog"
+	"time"
 )
 
 type HeartbeatChecker struct {

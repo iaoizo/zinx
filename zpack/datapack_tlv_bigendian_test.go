@@ -2,12 +2,11 @@ package zpack
 
 import (
 	"fmt"
+	"github.com/iaoizo/zinx/ziface"
 	"io"
 	"net"
 	"testing"
 	"time"
-
-	"github.com/iaoizo/zinx/ziface"
 )
 
 // run in terminal:

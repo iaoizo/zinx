@@ -2,9 +2,8 @@ package znet
 
 import (
 	"fmt"
-	"testing"
-
 	"github.com/iaoizo/zinx/ziface"
+	"testing"
 )
 
 func A1(request ziface.IRequest) {

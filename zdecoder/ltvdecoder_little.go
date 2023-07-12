@@ -51,9 +51,8 @@ package zdecoder
 import (
 	"bytes"
 	"encoding/binary"
-	"math"
-
 	"github.com/iaoizo/zinx/ziface"
+	"math"
 )
 
 const LTV_HEADER_SIZE = 8 //表示TLV空包长度

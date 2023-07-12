@@ -11,7 +11,7 @@ import (
 	"github.com/iaoizo/zinx/zinx_app_demo/mmo_game/pb"
 )
 
-// Player 玩家对象
+// 玩家对象
 type Player struct {
 	PID  int32              //玩家ID
 	Conn ziface.IConnection //当前玩家的连接

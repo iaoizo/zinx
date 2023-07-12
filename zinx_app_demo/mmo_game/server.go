@@ -2,18 +2,18 @@ package main
 
 import (
 	"fmt"
-
 	"github.com/iaoizo/zinx/zdecoder"
+	"github.com/iaoizo/zinx/zpack"
+
 	"github.com/iaoizo/zinx/ziface"
 	"github.com/iaoizo/zinx/zinx_app_demo/mmo_game/api"
 	"github.com/iaoizo/zinx/zinx_app_demo/mmo_game/core"
 	"github.com/iaoizo/zinx/znet"
-	"github.com/iaoizo/zinx/zpack"
 )
 
-// OnConnectionAdd 当客户端建立连接的时候的hook函数
-func OnConnectionAdd(conn ziface.IConnection) {
-	fmt.Println("=====> OnConnectionAdd is Called ...")
+// 当客户端建立连接的时候的hook函数
+func OnConnecionAdd(conn ziface.IConnection) {
+	fmt.Println("=====> OnConnecionAdd is Called ...")
 	//创建一个玩家
 	player := core.NewPlayer(conn)
 
@@ -61,7 +61,7 @@ func main() {
 	s := znet.NewServer()
 
 	//注册客户端连接建立和丢失函数
-	s.SetOnConnStart(OnConnectionAdd)
+	s.SetOnConnStart(OnConnecionAdd)
 	s.SetOnConnStop(OnConnectionLost)
 
 	//注册路由

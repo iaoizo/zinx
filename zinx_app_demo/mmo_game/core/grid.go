@@ -6,7 +6,7 @@ import (
 )
 
 /*
-GrID 一个地图中的格子类
+一个地图中的格子类
 */
 type GrID struct {
 	GID       int          //格子ID
@@ -51,7 +51,7 @@ func (g *GrID) GetPlyerIDs() (playerIDs []int) {
 	g.pIDLock.RLock()
 	defer g.pIDLock.RUnlock()
 
-	for k := range g.playerIDs {
+	for k, _ := range g.playerIDs {
 		playerIDs = append(playerIDs, k)
 	}
 

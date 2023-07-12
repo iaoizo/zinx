@@ -2,7 +2,6 @@ package logo
 
 import (
 	"fmt"
-
 	"github.com/iaoizo/zinx/zconf"
 )
 

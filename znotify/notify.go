@@ -3,13 +3,12 @@ package znotify
 import (
 	"errors"
 	"fmt"
-	"sync"
-
 	"github.com/iaoizo/zinx/ziface"
 	"github.com/iaoizo/zinx/zlog"
+	"sync"
 )
 
-// ConnIDMap Establish a structure that maps user-defined IDs to connections
+// Establish a structure that maps user-defined IDs to connections
 // Map will have concurrent access issues, as well as looping through large amounts of data
 // Currently, a map structure is used to store the data, but it may not be the best choice
 // (建立一个用户自定义ID和连接映射的结构
@@ -89,15 +88,13 @@ func (n *notify) NotifyAll(MsgId uint32, data []byte) error {
 func (n *notify) notifyAll(MsgId uint32, data []byte) error {
 	n.RLock()
 	defer n.RUnlock()
-	var err error
 	for Id, v := range n.cimap {
-		er := v.SendMsg(MsgId, data)
-		if er != nil {
-			zlog.Ins().ErrorF("Notify to %d err:%s \n", Id, er)
-			err = er
+		err := v.SendMsg(MsgId, data)
+		if err != nil {
+			zlog.Ins().ErrorF("Notify to %d err:%s \n", Id, err)
 		}
 	}
-	return err
+	return nil
 }
 
 // In extreme cases where many people are joining and sending messages at the same time, and the map needs to be released as soon as possible,
@@ -111,13 +108,10 @@ func (n *notify) notifyAll2(MsgId uint32, data []byte) error {
 	}
 	n.RUnlock()
 
-	var err error
 	for i := 0; i < len(conns); i++ {
-		if er := conns[i].SendMsg(MsgId, data); er != nil {
-			err = er
-		}
+		conns[i].SendMsg(MsgId, data)
 	}
-	return err
+	return nil
 }
 
 func (n *notify) NotifyBuffToConnByID(Id uint64, MsgId uint32, data []byte) error {

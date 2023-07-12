@@ -10,7 +10,7 @@ import (
 	"github.com/iaoizo/zinx/znet"
 )
 
-// WorldChatApi 世界聊天 路由业务
+// 世界聊天 路由业务
 type WorldChatApi struct {
 	znet.BaseRouter
 }

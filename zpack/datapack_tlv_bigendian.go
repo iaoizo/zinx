@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/binary"
 	"errors"
-
 	"github.com/iaoizo/zinx/zconf"
 	"github.com/iaoizo/zinx/ziface"
 )

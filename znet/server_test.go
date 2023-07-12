@@ -2,6 +2,7 @@ package znet
 
 import (
 	"fmt"
+	"github.com/iaoizo/zinx/zpack"
 	"io"
 	"net"
 	"sync"
@@ -9,14 +10,13 @@ import (
 	"time"
 
 	"github.com/iaoizo/zinx/ziface"
-	"github.com/iaoizo/zinx/zpack"
 )
 
 // run in terminal:
 // go test -v ./znet -run=TestServer
 
 /*
-ClientTest client
+client
 */
 func ClientTest(i uint32) {
 

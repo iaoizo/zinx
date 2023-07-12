@@ -1,9 +1,8 @@
 /*
-	Package zasync_op
-	@Author：14March
-	@File：async_worker.go
+Package zasync_op
+@Author：14March
+@File：async_worker.go
 */
-
 package zasync_op
 
 import "github.com/iaoizo/zinx/zlog"

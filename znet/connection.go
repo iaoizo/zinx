@@ -32,10 +32,6 @@ type Connection struct {
 	// 这个是理论支持的进程connID的最大数量)
 	connID uint64
 
-	// The workerid responsible for handling the link
-	// 负责处理该链接的workerid
-	workerID uint32
-
 	// The message management module that manages MsgID and the corresponding processing method
 	// (消息管理MsgID和对应处理方法的消息管理模块)
 	msgHandler ziface.IMsgHandle
@@ -182,7 +178,7 @@ func (c *Connection) StartWriter() {
 		select {
 		case data, ok := <-c.msgBuffChan:
 			if ok {
-				if err := c.Send(data); err != nil {
+				if _, err := c.conn.Write(data); err != nil {
 					zlog.Ins().ErrorF("Send Buff Data error:, %s Conn Writer exit", err)
 					break
 				}
@@ -280,9 +276,6 @@ func (c *Connection) Start() {
 		c.updateActivity()
 	}
 
-	// 占用workerid
-	c.workerID = useWorker(c)
-
 	// Start the Goroutine for reading data from the client
 	// (开启用户从客户端读取数据流程的Goroutine)
 	go c.StartReader()
@@ -290,9 +283,6 @@ func (c *Connection) Start() {
 	select {
 	case <-c.ctx.Done():
 		c.finalizer()
-
-		// 归还workerid
-		freeWorker(c)
 		return
 	}
 }
@@ -318,10 +308,6 @@ func (c *Connection) GetTCPConnection() net.Conn {
 
 func (c *Connection) GetConnID() uint64 {
 	return c.connID
-}
-
-func (c *Connection) GetWorkerID() uint32 {
-	return c.workerID
 }
 
 func (c *Connection) RemoteAddr() net.Addr {
@@ -385,9 +371,12 @@ func (c *Connection) SendToQueue(data []byte) error {
 // SendMsg directly sends Message data to the remote TCP client.
 // (直接将Message数据发送数据给远程的TCP客户端)
 func (c *Connection) SendMsg(msgID uint32, data []byte) error {
+	c.msgLock.RLock()
+	defer c.msgLock.RUnlock()
 	if c.isClosed == true {
 		return errors.New("connection closed when send msg")
 	}
+
 	// Pack data and send it
 	msg, err := c.packet.Pack(zpack.NewMsgPackage(msgID, data))
 	if err != nil {
@@ -395,7 +384,7 @@ func (c *Connection) SendMsg(msgID uint32, data []byte) error {
 		return errors.New("Pack error msg ")
 	}
 
-	err = c.Send(msg)
+	_, err = c.conn.Write(msg)
 	if err != nil {
 		zlog.Ins().ErrorF("SendMsg err msg ID = %d, data = %+v, err = %+v", msgID, string(msg), err)
 		return err
@@ -405,9 +394,9 @@ func (c *Connection) SendMsg(msgID uint32, data []byte) error {
 }
 
 func (c *Connection) SendBuffMsg(msgID uint32, data []byte) error {
-	if c.isClosed == true {
-		return errors.New("connection closed when send buff msg")
-	}
+	c.msgLock.RLock()
+	defer c.msgLock.RUnlock()
+
 	if c.msgBuffChan == nil {
 		c.msgBuffChan = make(chan []byte, zconf.GlobalObject.MaxMsgChanLen)
 		// Start a Goroutine to write data back to the client
@@ -419,6 +408,10 @@ func (c *Connection) SendBuffMsg(msgID uint32, data []byte) error {
 
 	idleTimeout := time.NewTimer(5 * time.Millisecond)
 	defer idleTimeout.Stop()
+
+	if c.isClosed == true {
+		return errors.New("Connection closed when send buff msg")
+	}
 
 	msg, err := c.packet.Pack(zpack.NewMsgPackage(msgID, data))
 	if err != nil {

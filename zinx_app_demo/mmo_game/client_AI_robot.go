@@ -1,6 +1,3 @@
-//go:build robot
-// +build robot
-
 package main
 
 import (

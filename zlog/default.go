@@ -3,7 +3,6 @@ package zlog
 import (
 	"context"
 	"fmt"
-
 	"github.com/iaoizo/zinx/ziface"
 )
 

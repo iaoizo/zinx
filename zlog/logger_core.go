@@ -18,13 +18,12 @@ package zlog
 import (
 	"bytes"
 	"fmt"
+	"github.com/iaoizo/zinx/zutils"
 	"os"
 	"path/filepath"
 	"runtime"
 	"sync"
 	"time"
-
-	"github.com/iaoizo/zinx/zutils"
 )
 
 const (
@@ -428,6 +427,14 @@ func (log *ZinxLoggerCore) closeFile() {
 
 func (log *ZinxLoggerCore) SetLogLevel(logLevel int) {
 	log.isolationLevel = logLevel
+}
+
+func (log *ZinxLoggerCore) checkFileExist(filename string) bool {
+	exist := true
+	if _, err := os.Stat(filename); os.IsNotExist(err) {
+		exist = false
+	}
+	return exist
 }
 
 // Convert an integer to a fixed-length string, where the width of the string should be greater than 0

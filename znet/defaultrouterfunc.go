@@ -3,13 +3,12 @@ package znet
 import (
 	"bytes"
 	"fmt"
+	"github.com/iaoizo/zinx/ziface"
+	"github.com/iaoizo/zinx/zlog"
 	"path"
 	"runtime"
 	"strings"
 	"time"
-
-	"github.com/iaoizo/zinx/ziface"
-	"github.com/iaoizo/zinx/zlog"
 )
 
 const (

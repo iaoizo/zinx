@@ -2,15 +2,14 @@ package znotify
 
 import (
 	"fmt"
-	"net"
-	"strconv"
-	"testing"
-	"time"
-
 	"github.com/iaoizo/zinx/zconf"
 	"github.com/iaoizo/zinx/ziface"
 	"github.com/iaoizo/zinx/znet"
 	"github.com/iaoizo/zinx/zpack"
+	"net"
+	"strconv"
+	"testing"
+	"time"
 )
 
 var nt = NewZNotify()

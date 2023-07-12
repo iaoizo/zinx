@@ -1,10 +1,9 @@
 package args
 
 import (
+	"github.com/iaoizo/zinx/zutils/commandline/uflag"
 	"os"
 	"path/filepath"
-
-	"github.com/iaoizo/zinx/zutils/commandline/uflag"
 )
 
 type args struct {
